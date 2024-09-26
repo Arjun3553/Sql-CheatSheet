@@ -242,3 +242,83 @@ to check the validity of the data that is entered into a table column
 ```
 alter table tablename modify column columnname datatype check(condition);
 ```
+
+## To Check All Constraints
+
+to check all the constraints of a table
+
+```
+show create table tablename;
+```
+
+# SQL Queries
+
+## Insert Query
+
+to insert a row into a table column
+
+```
+insert into tablename (column1, column2, column3) values (value1, value2, value3);
+```
+
+another variation without column. Ensure values are in the same order as the columns in the table
+
+```
+insert into tablename values (value1, value2, value3);
+```
+
+## Insert Into - Select Query
+
+to insert data from a table to another table using select query
+
+```
+insert into newtablename select * from tablename;
+```
+
+with using where clause
+
+```
+insert into newtablename select column1, column2 from tablename where (condition);
+```
+
+## Insert Into - Table Query
+
+to insert data from a table to another table using table query
+
+```
+insert into newtablename table tablename;
+```
+
+## Select Query
+
+to select query is used to fetch data from a table
+
+```
+select * from tablename;
+```
+
+```
+select column1, column2 from tablename;
+```
+
+select query based on where clause
+
+```
+select column1, column2 from tablename where (condition);
+```
+
+## Select Query - Alias
+
+to fetch data from a table using alias
+
+```
+select columnname as aliasname from tablename;
+```
+
+## Select Query - Concat()
+
+to fetch data from a table using concat and alias
+
+```
+select concat(column1, column2) as aliasname, column3 from tablename;
+```
