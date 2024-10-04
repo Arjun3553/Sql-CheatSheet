@@ -358,3 +358,51 @@ to sort the results in a custom order using case
 ```
 select * from tablename where (condition) order by (case columnname  when columnvalue then ordernumber) [asc/desc];
 ```
+
+# SQL Views
+
+## Create Views
+
+to create a view in a database
+
+```
+create view view_name as select * from tablename where (condition);
+```
+
+with **check option** - to ensure all the update and insert statements satify the conditions specified by the where clause
+
+```
+create view view_name as select * from tablename where (condition) with check option;
+```
+
+## List All Views
+
+to list all views in a database
+
+```
+select table_schema, table_name from information_schema.views where table_schema like 'database_name';
+```
+
+## Update Views
+
+to update a view in a database
+
+```
+update viewname set columnN = valueN where (condition);
+```
+
+## Drop Views
+
+to drop a view from a database
+
+```
+drop view view_name;
+```
+
+## Delete Views
+
+to delete a particular record from the view
+
+```
+delete from view_name where (condition);
+```
