@@ -322,3 +322,39 @@ to fetch data from a table using concat and alias
 ```
 select concat(column1, column2) as aliasname, column3 from tablename;
 ```
+
+## Update Query
+
+update query is used to modify the existing records in a table
+
+```
+update table tablename set column1=value1, column2=value2 where (condition);
+```
+
+## Delete Query
+
+to delete a record from a table based on where clause, if there is no where clause all the records will be deleted
+
+```
+delete from tablename where (condition);
+```
+
+```
+delete from tablename ;
+```
+
+## Sorting Results
+
+order by clause is used to sort the results in ascending or descending order, by default all records will be sorted ascending
+
+```
+select * from tablename where (condition) order by columnname [asc/desc];
+```
+
+## Sorting Results - Custom Order
+
+to sort the results in a custom order using case
+
+```
+select * from tablename where (condition) order by (case columnname  when columnvalue then ordernumber) [asc/desc];
+```
