@@ -406,3 +406,28 @@ to delete a particular record from the view
 ```
 delete from view_name where (condition);
 ```
+
+# SQL Operators and Clauses
+
+## SQL Where clause
+
+where clause is used to filter the results obtained from the dml query such as select, update,delete.
+
+```
+select * from tablename where (condition);
+```
+```
+update tablename set columnN = valueN where (condition);
+```
+```
+delete from tablename where (condition);
+```
+
+## SQL Limit Clause
+
+sql limit clause is used to restrict the number of rows returned from by a select statement.
+offset clause is used to get the record that is next to the previous record
+
+```
+select * from tablename where (condition) limit value offset value;
+```
