@@ -416,14 +416,16 @@ where clause is used to filter the results obtained from the dml query such as s
 ```
 select * from tablename where (condition);
 ```
+
 ```
 update tablename set columnN = valueN where (condition);
 ```
+
 ```
 delete from tablename where (condition);
 ```
 
-## SQL Limit Clause
+## SQL Limit & Offset Clause
 
 sql limit clause is used to restrict the number of rows returned from by a select statement.
 offset clause is used to get the record that is next to the previous record
@@ -431,3 +433,110 @@ offset clause is used to get the record that is next to the previous record
 ```
 select * from tablename where (condition) limit value offset value;
 ```
+
+## SQL Distinct clause
+
+distinct keyword is used to get the unique records from a table
+
+```
+select distinct column1, column2, columnN from tablename where (condition) order by columnN [asc/desc];
+```
+
+## SQL Distinct clause - count
+
+count is used to get the number of records returned by the select query
+
+```
+select count(distinct column1, column2, columnN) from tablename where (condition) order by columnN [asc/desc];
+```
+
+## SQL Group by clause
+
+group by clause is used to arrange identical data into groups and should be used along with aggregate functions
+
+## aggregate functions
+
+sum(), min(), max(), count(), avg()
+
+```
+select column1, aggregate_function(columnN) from tablename group by columnN;
+```
+
+or
+
+```
+select column1, columnN from tablename group by column1, columnN;
+```
+
+## SQL Group by clause - with having and order by
+
+having is used to filter the grouped data in a table based on a specific criteria
+
+```
+select column1 from tablename group by column1 having (condition) order by columnN [asc/desc];
+```
+
+## SQL AND & OR & NOT
+
+conjunctive operators are used to combine two or more conditions in an sql statement
+
+```
+select * from tablename where not((condition) and (condition1) or (condition2));
+```
+
+## SQL Boolean Operators
+
+a boolean is a universal datatype that is used to store true or false value
+
+```
+create table tablename column1 datatype constraint,columnN boolean constraint;
+```
+
+dynamic insertion of boolean value based on the color while insertion is performed
+
+```
+insert into tablename values(column1 value, column2 value, column3 value, case when "column3 value" = "something" then "some value" else 0 end);
+```
+
+## SQL Like Operator
+
+like operator is used to get the values from the table based on a specific pattern
+
+```
+select * from tablename where columnN like "pattern";
+```
+
+## pattern
+
+"b%" -> return any value that has b as the second letter
+
+"%b%" -> return any value that has b anywhere in the text
+
+"%b" -> return any value that ends with b
+
+"b%" - > return any value that starts with b
+
+## SQL In Operator
+
+In operator is used to specify multiple values or sub query in the where clause.
+
+```
+select * from tablename where columnN in(value1, value2, value3);
+```
+
+also In operator is used with Not operator
+
+```
+select * from tablename where columnN not in (value1, value2, value3);
+```
+
+## SQL ANY and ALL Operator
+
+any and all operator are used to perform comparison between a single value and range of values retured by the sub query
+the ANY and ALL operators must be preceded by a standard comparison operator i.e. >, >=, <, <=, =, <>, != and followed by a subquery. The main difference between ANY and ALL is that ANY returns true if any of the subquery values meet the condition whereas ALL returns true if all of the subquery values meet the condition.
+
+```
+select * from tablename where columnN > Any(subquery);
+```
+
+subquery = select columnN from tablename where (condition);
