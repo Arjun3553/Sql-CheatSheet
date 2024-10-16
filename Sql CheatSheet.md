@@ -532,7 +532,7 @@ select * from tablename where columnN not in (value1, value2, value3);
 
 ## SQL ANY and ALL Operator
 
-any and all operator are used to perform comparison between a single value and range of values retured by the sub query
+ANY and ALL operator are used to perform comparison between a single value and range of values retured by the sub query
 the ANY and ALL operators must be preceded by a standard comparison operator i.e. >, >=, <, <=, =, <>, != and followed by a subquery. The main difference between ANY and ALL is that ANY returns true if any of the subquery values meet the condition whereas ALL returns true if all of the subquery values meet the condition.
 
 ```
@@ -540,3 +540,20 @@ select * from tablename where columnN > Any(subquery);
 ```
 
 subquery = select columnN from tablename where (condition);
+
+## SQL Exists Operator
+
+The SQL EXISTS operator is used to verify whether a particular record exists in a MySQL table.
+
+```
+select * from tablename where exists(condition);
+```
+
+subquery = select columnN from newtablename where tablename.columnN = newtablename.columnN [and/or/not] (condition);
+
+## SQL CASE
+
+The SQL Case statement is a conditional statement that help us to make decision based on set of conditions.
+```
+select column1, column2, (case when conditionN then valueN else valueM end) as aliasname from tablename;
+```
