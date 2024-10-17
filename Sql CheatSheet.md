@@ -551,9 +551,77 @@ select * from tablename where exists(condition);
 
 subquery = select columnN from newtablename where tablename.columnN = newtablename.columnN [and/or/not] (condition);
 
-## SQL CASE
+## SQL CASE Operator
 
 The SQL Case statement is a conditional statement that help us to make decision based on set of conditions.
+
 ```
 select column1, column2, (case when conditionN then valueN else valueM end) as aliasname from tablename;
+```
+
+## SQL NOT Operator
+
+SQL NOT is a logical operator/connective used to negate a condition or boolean expression in a WHERE clause.
+
+```
+select * from tablename where not (condition);
+```
+
+## SQL Not Equal Operator
+
+The SQL NOT EQUAL operator is used to compare two values and return true if they are not equal.
+<> or != the main difference between the two is that <> follows the ISO standard, but != doesn't.
+
+```
+select * from tablename where (condition);
+```
+
+condition - columnN <> valueN
+
+## SQL Is Null Operator
+
+The SQL IS NULL operator is used to check whether a value in a column is NULL. It returns true if the column value is NULL; otherwise false.
+
+```
+select * from tablename where columnN Is Null;
+```
+
+## SQL Is Not Null Operator
+
+The SQL IS NOT NULL operator is used to filter data by verifying whether a particular column has a not-null values. This operator can be used with SQL statements such as SELECT, UPDATE, and DELETE.
+
+```
+select * from tablename where columnN IS NOT NULL;
+```
+
+```
+update tablename set columnN = valueN where columnN IS NOT NULL;
+```
+
+```
+delete from tablename where columnN IS NOT NULL;
+```
+
+## SQL Not Null Constraint
+
+The NOT NULL constraint in SQL is used to ensure that a column in a table doesn't contain NULL (empty) values, and prevent any attempts to insert or update rows with NULL values.
+
+```
+Alter table tablename modify column columnN datatype constraints
+```
+
+constraint - Not Null
+
+## SQL Between Operator
+
+The BETWEEN operator is a logical operator in SQL, that is used to retrieve the data within a specified range.
+
+```
+select * from tablename where columnN between valueN AND valueM;
+```
+
+Between with IN Operator
+
+```
+select * from tablename where columnN between valueN AND valueM AND columnM in (valueQ, valueW, valueE);
 ```
