@@ -625,3 +625,31 @@ Between with IN Operator
 ```
 select * from tablename where columnN between valueN AND valueM AND columnM in (valueQ, valueW, valueE);
 ```
+
+## SQL Union Operator
+
+The SQL Union operator is used to combine data from multiple tables by eliminating duplicate rows and return them as a single table.
+
+```
+select * from tablename where (condition) union select * from newtablename where (condition);
+```
+
+## SQL Union All Operator
+
+The SQL Union All operator is used to combine data from multiple tables by preserving duplicate rows and return them as a single table
+
+```
+select * from tablename where (condition) union all select * from newtablename where (condition);
+```
+
+the tables that are combined together should have the same number of columns
+
+## SQL Intersect Operator
+
+The SQL Intersect operator is used to combine common data from multiple tables and return them as a single set.
+
+```
+select column1, column2 from tablename intersect select column1, column2 from newtablename;
+```
+
+note : column1, column2 should be present in both the tables;
