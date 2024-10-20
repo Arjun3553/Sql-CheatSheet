@@ -1,3 +1,7 @@
+# MySQL Cheatsheet
+
+#---------------------------------------------------------------------------------------------#
+
 # SQL Database
 
 ## Create Database
@@ -788,3 +792,45 @@ create table foreigntable(
 );
 
 ```
+
+# SQL Indexes
+
+## SQL Index
+
+The SQL Indexes are special lookup tables that are used to speed up the process of data retrieval.
+
+```
+create index indexname on tablename (columnname);
+```
+
+## Drop Index
+
+The Drop Index is used to drop the index from the database table.
+
+```
+drop index indexname on tablename;
+```
+
+## Show Index
+
+The Show Index is used to display the index present in a database table.
+
+```
+show index from tablename;
+```
+
+## Unique Index
+
+The Unique Index is used to remove duplicate value in a table column.
+
+```
+create unique index on tablename (columnname);
+```
+
+## SQL Clustered Index
+
+The SQL Clustered Index is a type of index that define the physical order in which the data is stored in the table.
+
+## SQL Non Clustered Index
+
+The Non Clustered Index is a type of index that creates a special table that contains the copy of indexed column along with the pointer that point to the actual data in the table.
