@@ -653,3 +653,78 @@ select column1, column2 from tablename intersect select column1, column2 from ne
 ```
 
 note : column1, column2 should be present in both the tables;
+
+# SQL Joins
+
+## SQL Using Joins
+
+The SQL Joins operator is used to combine data from two or more tables in a database.
+
+```
+select column1, column2, columnN from tablename join newtablename;
+```
+
+### Types Of Joins
+
+**Inner Join** - is the default implementation which retrieves all the records of the intersection of two tables.  
+**Outer Join** - unlike inner join outer join retrieve all the records in the two tables.  
+Outer Join - Left Join, Right Join, Full Join
+
+**Left Join** - returns all the rows in the left table even if there is no match in the right table.  
+**Right Join** - return all the rows in the right table even if there is no match in the left table.  
+**Full Join** - return a row if there a match in any one of the two tables.
+
+**Self Join** - is used to join the table to itself.  
+**Cross Join** - return the cartesian product of the two tables.
+
+## SQL Inner Join
+
+The SQL Inner Join is used to retrieve all the records of intersection of two tables.
+
+```
+select tablename.column1, tablename.column2, newtablename.column3 from tablename inner join newtablename on tablename.columnN = newtablename.columnN;
+```
+
+## SQL Left Join
+
+The SQL Left Join is used to retrieve all the records from the left table even if there is no match found in the right table.
+
+```
+select tablename.column1, tablename.column2, newtablename.column3 from tablename left join newtablename on tablename.columnN = newtablename.columnN;
+```
+
+## SQL Right Join
+
+The SQL Right Join is used to retrieve all the records from the right table even if there is no match found in the left table.
+
+```
+select tablename.column1, tablename.column2, newtablename.column3 from tablename right join newtablename on tablename.columnN = newtablename.columnN;
+```
+
+## SQL Full Join
+
+The SQL Full Join is used to retrieve the records that is present in either one table.
+
+MySQL doesn't support full join but the same results can be achieved using left join union right join or vice versa.
+
+```
+select tablename.column1, tablename.column2, newtablename.column3 from tablename right join newtablename on tablename.columnN = newtablename.columnN
+union
+select tablename.column1, tablename.column2, newtablename.column3 from tablename left join newtablename on tablename.columnN = newtablename.columnN;
+```
+
+## SQL Cross Join
+
+The SQL Cross Join is used to return the cartesian product of two tables.
+
+```
+select tablename.column1, newtablename.column2 from tablename cross join newtablename;
+```
+
+## SQL Self Join
+
+The SQL Self Join is used to join the table to itself as if there were two tables.
+
+```
+select M.column1, M.column2, N.column3 from tablename M, tablename N where (condition);
+```
