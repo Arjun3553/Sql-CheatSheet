@@ -728,3 +728,63 @@ The SQL Self Join is used to join the table to itself as if there were two table
 ```
 select M.column1, M.column2, N.column3 from tablename M, tablename N where (condition);
 ```
+
+# SQL Keys
+
+## SQL Unique Key
+
+The SQL Unique key does not allow the duplicate values to be present in a column of a table.
+
+```
+alter table tablename modify column columnname datatype unique;
+```
+
+## SQL Primary Key
+
+The SQL Primary Key is a column that uniquely identifies each record of a database table.
+
+```
+create table tablename (
+    columnName datatype primary key,
+);
+```
+
+## SQL Composite Key
+
+When the primary key is created on multiple fields of a table it is known as composite key.
+
+```
+create table tablename (
+    column1 datatype constraints,
+    column2 datatype constraints,
+    columnN datatype constraints,
+    primary key (column1, column2)
+);
+```
+
+## SQL Candidate Key / Alternate Key
+
+Those keys which can act as a primary key are called as candidate key, there can be only one primary key but n number of candidate keys.
+
+## SQL Foreign Key
+
+The SQL Foreign key is a column in one table that matches a primary key in another table allowing the connection between the two tables.
+
+```
+create table tablename (
+    column1 datatype constraints,
+    column2 datatype constraints,
+    columnN datatype constraints,
+    primary key (column1)
+);
+
+create table foreigntable(
+    column1 datatype constraints,
+    column2 datatype constraints,
+    constraint constraintname
+    foreign key (column2)
+    references tablename(column1),
+    primary key (column1)
+);
+
+```
