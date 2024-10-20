@@ -834,3 +834,13 @@ The SQL Clustered Index is a type of index that define the physical order in whi
 ## SQL Non Clustered Index
 
 The Non Clustered Index is a type of index that creates a special table that contains the copy of indexed column along with the pointer that point to the actual data in the table.
+
+## SQL Wildcards
+
+The SQL Wildcards are special characters that is used to replace the characters in a string.
+
+( % ) and ( \_ ) are the two wildcard characters.
+
+```
+select * from tablename where columnN like ("%_a");
+```
