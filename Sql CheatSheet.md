@@ -1,3 +1,7 @@
+# MySQL Cheatsheet
+
+#---------------------------------------------------------------------------------------------#
+
 # SQL Database
 
 ## Create Database
@@ -532,7 +536,7 @@ select * from tablename where columnN not in (value1, value2, value3);
 
 ## SQL ANY and ALL Operator
 
-any and all operator are used to perform comparison between a single value and range of values retured by the sub query
+ANY and ALL operator are used to perform comparison between a single value and range of values retured by the sub query
 the ANY and ALL operators must be preceded by a standard comparison operator i.e. >, >=, <, <=, =, <>, != and followed by a subquery. The main difference between ANY and ALL is that ANY returns true if any of the subquery values meet the condition whereas ALL returns true if all of the subquery values meet the condition.
 
 ```
@@ -540,3 +544,303 @@ select * from tablename where columnN > Any(subquery);
 ```
 
 subquery = select columnN from tablename where (condition);
+
+## SQL Exists Operator
+
+The SQL EXISTS operator is used to verify whether a particular record exists in a MySQL table.
+
+```
+select * from tablename where exists(condition);
+```
+
+subquery = select columnN from newtablename where tablename.columnN = newtablename.columnN [and/or/not] (condition);
+
+## SQL CASE Operator
+
+The SQL Case statement is a conditional statement that help us to make decision based on set of conditions.
+
+```
+select column1, column2, (case when conditionN then valueN else valueM end) as aliasname from tablename;
+```
+
+## SQL NOT Operator
+
+SQL NOT is a logical operator/connective used to negate a condition or boolean expression in a WHERE clause.
+
+```
+select * from tablename where not (condition);
+```
+
+## SQL Not Equal Operator
+
+The SQL NOT EQUAL operator is used to compare two values and return true if they are not equal.
+<> or != the main difference between the two is that <> follows the ISO standard, but != doesn't.
+
+```
+select * from tablename where (condition);
+```
+
+condition - columnN <> valueN
+
+## SQL Is Null Operator
+
+The SQL IS NULL operator is used to check whether a value in a column is NULL. It returns true if the column value is NULL; otherwise false.
+
+```
+select * from tablename where columnN Is Null;
+```
+
+## SQL Is Not Null Operator
+
+The SQL IS NOT NULL operator is used to filter data by verifying whether a particular column has a not-null values. This operator can be used with SQL statements such as SELECT, UPDATE, and DELETE.
+
+```
+select * from tablename where columnN IS NOT NULL;
+```
+
+```
+update tablename set columnN = valueN where columnN IS NOT NULL;
+```
+
+```
+delete from tablename where columnN IS NOT NULL;
+```
+
+## SQL Not Null Constraint
+
+The NOT NULL constraint in SQL is used to ensure that a column in a table doesn't contain NULL (empty) values, and prevent any attempts to insert or update rows with NULL values.
+
+```
+Alter table tablename modify column columnN datatype constraints
+```
+
+constraint - Not Null
+
+## SQL Between Operator
+
+The BETWEEN operator is a logical operator in SQL, that is used to retrieve the data within a specified range.
+
+```
+select * from tablename where columnN between valueN AND valueM;
+```
+
+Between with IN Operator
+
+```
+select * from tablename where columnN between valueN AND valueM AND columnM in (valueQ, valueW, valueE);
+```
+
+## SQL Union Operator
+
+The SQL Union operator is used to combine data from multiple tables by eliminating duplicate rows and return them as a single table.
+
+```
+select * from tablename where (condition) union select * from newtablename where (condition);
+```
+
+## SQL Union All Operator
+
+The SQL Union All operator is used to combine data from multiple tables by preserving duplicate rows and return them as a single table
+
+```
+select * from tablename where (condition) union all select * from newtablename where (condition);
+```
+
+the tables that are combined together should have the same number of columns
+
+## SQL Intersect Operator
+
+The SQL Intersect operator is used to combine common data from multiple tables and return them as a single set.
+
+```
+select column1, column2 from tablename intersect select column1, column2 from newtablename;
+```
+
+note : column1, column2 should be present in both the tables;
+
+# SQL Joins
+
+## SQL Using Joins
+
+The SQL Joins operator is used to combine data from two or more tables in a database.
+
+```
+select column1, column2, columnN from tablename join newtablename;
+```
+
+### Types Of Joins
+
+**Inner Join** - is the default implementation which retrieves all the records of the intersection of two tables.  
+**Outer Join** - unlike inner join outer join retrieve all the records in the two tables.  
+Outer Join - Left Join, Right Join, Full Join
+
+**Left Join** - returns all the rows in the left table even if there is no match in the right table.  
+**Right Join** - return all the rows in the right table even if there is no match in the left table.  
+**Full Join** - return a row if there a match in any one of the two tables.
+
+**Self Join** - is used to join the table to itself.  
+**Cross Join** - return the cartesian product of the two tables.
+
+## SQL Inner Join
+
+The SQL Inner Join is used to retrieve all the records of intersection of two tables.
+
+```
+select tablename.column1, tablename.column2, newtablename.column3 from tablename inner join newtablename on tablename.columnN = newtablename.columnN;
+```
+
+## SQL Left Join
+
+The SQL Left Join is used to retrieve all the records from the left table even if there is no match found in the right table.
+
+```
+select tablename.column1, tablename.column2, newtablename.column3 from tablename left join newtablename on tablename.columnN = newtablename.columnN;
+```
+
+## SQL Right Join
+
+The SQL Right Join is used to retrieve all the records from the right table even if there is no match found in the left table.
+
+```
+select tablename.column1, tablename.column2, newtablename.column3 from tablename right join newtablename on tablename.columnN = newtablename.columnN;
+```
+
+## SQL Full Join
+
+The SQL Full Join is used to retrieve the records that is present in either one table.
+
+MySQL doesn't support full join but the same results can be achieved using left join union right join or vice versa.
+
+```
+select tablename.column1, tablename.column2, newtablename.column3 from tablename right join newtablename on tablename.columnN = newtablename.columnN
+union
+select tablename.column1, tablename.column2, newtablename.column3 from tablename left join newtablename on tablename.columnN = newtablename.columnN;
+```
+
+## SQL Cross Join
+
+The SQL Cross Join is used to return the cartesian product of two tables.
+
+```
+select tablename.column1, newtablename.column2 from tablename cross join newtablename;
+```
+
+## SQL Self Join
+
+The SQL Self Join is used to join the table to itself as if there were two tables.
+
+```
+select M.column1, M.column2, N.column3 from tablename M, tablename N where (condition);
+```
+
+# SQL Keys
+
+## SQL Unique Key
+
+The SQL Unique key does not allow the duplicate values to be present in a column of a table.
+
+```
+alter table tablename modify column columnname datatype unique;
+```
+
+## SQL Primary Key
+
+The SQL Primary Key is a column that uniquely identifies each record of a database table.
+
+```
+create table tablename (
+    columnName datatype primary key,
+);
+```
+
+## SQL Composite Key
+
+When the primary key is created on multiple fields of a table it is known as composite key.
+
+```
+create table tablename (
+    column1 datatype constraints,
+    column2 datatype constraints,
+    columnN datatype constraints,
+    primary key (column1, column2)
+);
+```
+
+## SQL Candidate Key / Alternate Key
+
+Those keys which can act as a primary key are called as candidate key, there can be only one primary key but n number of candidate keys.
+
+## SQL Foreign Key
+
+The SQL Foreign key is a column in one table that matches a primary key in another table allowing the connection between the two tables.
+
+```
+create table tablename (
+    column1 datatype constraints,
+    column2 datatype constraints,
+    columnN datatype constraints,
+    primary key (column1)
+);
+
+create table foreigntable(
+    column1 datatype constraints,
+    column2 datatype constraints,
+    constraint constraintname
+    foreign key (column2)
+    references tablename(column1),
+    primary key (column1)
+);
+
+```
+
+# SQL Indexes
+
+## SQL Index
+
+The SQL Indexes are special lookup tables that are used to speed up the process of data retrieval.
+
+```
+create index indexname on tablename (columnname);
+```
+
+## Drop Index
+
+The Drop Index is used to drop the index from the database table.
+
+```
+drop index indexname on tablename;
+```
+
+## Show Index
+
+The Show Index is used to display the index present in a database table.
+
+```
+show index from tablename;
+```
+
+## Unique Index
+
+The Unique Index is used to remove duplicate value in a table column.
+
+```
+create unique index on tablename (columnname);
+```
+
+## SQL Clustered Index
+
+The SQL Clustered Index is a type of index that define the physical order in which the data is stored in the table.
+
+## SQL Non Clustered Index
+
+The Non Clustered Index is a type of index that creates a special table that contains the copy of indexed column along with the pointer that point to the actual data in the table.
+
+## SQL Wildcards
+
+The SQL Wildcards are special characters that is used to replace the characters in a string.
+
+( % ) and ( \_ ) are the two wildcard characters.
+
+```
+select * from tablename where columnN like ("%_a");
+```
