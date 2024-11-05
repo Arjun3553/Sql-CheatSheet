@@ -4,6 +4,8 @@
 
 # SQL Database
 
+Sql or Relational Database is used to store and modify the data objects that are related to one another.
+
 ## Create Database
 
 to create a database
@@ -53,6 +55,8 @@ drop database if exists databasename;
 ```
 
 # SQL Table
+
+Tables are database objects used to store the data in rows and columns format.
 
 ## Creating Table
 
@@ -364,6 +368,8 @@ select * from tablename where (condition) order by (case columnname  when column
 ```
 
 # SQL Views
+
+Sql views are virtual table that is stored in the database with an associated name.
 
 ## Create Views
 
@@ -843,4 +849,104 @@ The SQL Wildcards are special characters that is used to replace the characters 
 
 ```
 select * from tablename where columnN like ("%_a");
+```
+
+## SQL Query - Order Of Execution
+
+The typical order of execution of sql statements is :
+
+1. from
+2. join
+3. where
+4. group by
+5. having
+6. select
+7. distinct
+8. order by
+9. limit / offset
+
+## SQL Query - Grant And Revoke
+
+Grant - provides privileges to users
+Revoke - removes the privileges given to users
+
+```
+grant select , insert on databasename / databasename.tablename to 'username'@'hostname';
+```
+
+```
+revoke select , insert on databasename / databasename.tablename from 'username'@'hostname';
+```
+
+to show all the grants of the users
+
+```
+show grants for 'username'@'hostname';
+```
+
+to grant all the privileges given to the users
+
+```
+grant all the privileges on databasename / databasename.tablename to 'username'@'hostname';
+```
+
+to revoke all the privileges given to the users
+
+```
+revoke all the privileges on databasename / databasename.tablename from 'username'@'hostname';
+```
+
+to create a new user
+
+```
+create user 'username'@'hostname' identified by 'password';
+```
+
+to remove the user
+
+```
+drop user 'username'@'hostname';
+```
+
+to show all the users
+
+```
+select user, host from mysql.user;
+```
+
+## SQL Query - Commit, Rollback, Savepoint
+
+Commit - saves the work done in the transaction and make the changes permanent.
+
+Rollback - is used to revert the database to the last committed state.
+
+Savepoint - set points within transaction so that you can rollback later.
+
+Commit
+
+```
+start transaction;
+update tablename set column_name = value where (condition);
+commit;
+```
+
+Rollback
+
+```
+start transaction;
+delete from tablename where (condition);
+rollback;
+commit;
+```
+
+Savepoint
+
+```
+start transaction;
+update tablename set column_name = value where (condition);
+savepoint updateid;
+delete from tablename where (condition);
+savepoint deleteid;
+rollback to savepoint_name;
+commit;
 ```
